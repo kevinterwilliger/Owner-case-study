@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: dim_lead_customer_profile
+    description: Dimension table containing lead profile metrics
+    columns:
+      - name: lead_id
+        tests:
+          - unique
+          - not_null
+  - name: fct_monthly_reporting
+    description: Fact table containing aggregate spend and revenue metrics by month and channel
+    columns:
+      - name: month_period
+        tests:
+          - not_null
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "(month_period || '-' || spend_channel)"

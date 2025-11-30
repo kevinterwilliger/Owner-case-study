@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_leads
+    description: Staging model for Leads
+    columns:
+      - name: lead_id
+        tests:
+          - unique
+          - not_null
+  - name: stg_opportunities
+    description: Staging model for Opportunities
+    columns:
+      - name: opportunity_id
+        tests:
+          - unique
+          - not_null

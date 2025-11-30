@@ -1,0 +1,24 @@
+name: owner_case_study
+version: 1.0.0
+config-version: 2
+profile: owner_case_study
+model-paths:
+  - models
+analysis-paths:
+  - analyses
+test-paths:
+  - tests
+seed-paths:
+  - seeds
+macro-paths:
+  - macros
+snapshot-paths:
+  - snapshots
+models:
+  owner_case_study:
+    stg:
+      +materialized: view
+    int:
+      +materialized: table
+    mart:
+      +materialized: table

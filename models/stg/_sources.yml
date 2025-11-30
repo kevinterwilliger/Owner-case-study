@@ -1,0 +1,9 @@
+version: 1
+
+sources:
+  - name: GTM_CASE
+    tables:
+      - name: EXPENSES_ADVERTISING
+      - name: EXPENSES_SALARY_AND_COMMISSION
+      - name: LEADS
+      - name: OPPORTUNITIES

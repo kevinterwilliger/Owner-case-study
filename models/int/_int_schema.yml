@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: int_channel_spend
+    description: Intermediate model containing channel spend data
+    columns:
+      - name: month_period
+        tests:
+          - unique
+          - not_null
+  - name: int_lead_value
+    description: Intermediate model containing lead value calculations
+    columns:
+      - name: lead_id
+        description: Unique identifier for the lead
+        tests:
+          - unique
+          - not_null
+      - name: opportunity_id
+        description: Foreign key to opportunity
