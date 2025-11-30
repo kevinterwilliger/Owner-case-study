@@ -6,8 +6,11 @@ models:
     columns:
       - name: month_period
         tests:
-          - unique
           - not_null
+      - name: surrogate_key
+        tests:
+          - not_null
+          - unique
   - name: int_lead_value
     description: Intermediate model containing lead value calculations
     columns:
@@ -16,5 +19,3 @@ models:
         tests:
           - unique
           - not_null
-      - name: opportunity_id
-        description: Foreign key to opportunity

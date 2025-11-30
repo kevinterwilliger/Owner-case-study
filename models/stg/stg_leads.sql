@@ -23,7 +23,7 @@ SELECT
     , {{ parse_array("cuisine_types") }} AS cuisine_types
     , sales_call_count
     , status
-    , {{ parse_dollars("predicted_sales_with_owner") }} AS predicted_sales_with_owner
+    , {{ parse_dollars("predicted_sales_with_owner") }} AS predicted_monthly_sales -- Assumed to be montly sales
     , {{ parse_array("marketplaces_used") }} AS marketplaces_used
     , {{ parse_array("online_ordering_used") }} AS online_ordering_used
     , last_sales_email_date

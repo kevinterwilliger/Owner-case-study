@@ -31,6 +31,7 @@ WITH combined AS (
 SELECT
     month_period
     , spend_channel
+    , (month_period || spend_channel) AS surrogate_key
     , SUM(spend) AS spend
 FROM combined
 GROUP BY 1, 2

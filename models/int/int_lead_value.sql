@@ -29,7 +29,7 @@ SELECT
     , leads.status
     , leads.marketplaces_used
     , leads.online_ordering_used
-    , leads.predicted_sales_with_owner
+    , leads.predicted_monthly_sales
     , leads.last_sales_email_date
     , leads.first_sales_call_date
     , leads.location_count
@@ -47,14 +47,15 @@ SELECT
     , opps.business_issue_c
     , opps.closed_lost_notes_c
     , opps.close_date
+    , DATEDIFF(DAY, leads.initial_engagement_date, opps.close_date) AS total_sales_cycle_days
     , opps.last_sales_call_date_time
     , opps.account_id
     , opps.created_date AS opp_created_date
     , opps.how_did_you_hear_about_us_c
 
-    , leads.predicted_sales_with_owner * {{ estimated_sub_length }} AS predicted_monthly_sales
+    , leads.predicted_monthly_sales * {{ estimated_sub_length }} AS predicted_total_sales
     , {{ monthly_sub }} * {{ estimated_sub_length }} AS subscription_ltv
-    , {{ take_rate }} * leads.predicted_sales_with_owner AS sales_ltv
+    , {{ take_rate }} * leads.predicted_monthly_sales * {{ estimated_sub_length }} AS sales_ltv
     , subscription_ltv + sales_ltv AS estimated_ltv
 FROM {{ ref("stg_leads") }} AS leads
 LEFT JOIN {{ ref("stg_opportunities") }} AS opps

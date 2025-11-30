@@ -2,9 +2,17 @@ version: 2
 
 models:
   - name: dim_lead_customer_profile
-    description: Dimension table containing lead profile metrics
+    description: Dimension table containing customer profile metrics
     columns:
       - name: lead_id
+        tests:
+          - unique
+          - not_null
+      - name: opportunity_id
+        tests:
+          - unique
+          - not_null
+      - name: account_id
         tests:
           - unique
           - not_null
@@ -14,7 +22,7 @@ models:
       - name: month_period
         tests:
           - not_null
-    data_tests:
-      - unique:
-          arguments:
-            column_name: "(month_period || '-' || spend_channel)"
+      - name: surrogate_key
+        tests:
+          - not_null
+          - unique

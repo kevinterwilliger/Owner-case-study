@@ -22,6 +22,7 @@ WITH monthly_revenue AS (
 SELECT
     spend.month_period
     , spend.spend_channel
+    , (spend.month_period || spend.spend_channel) AS surrogate_key
     , spend.spend
     , revenue.n_cw AS opps_won
     , revenue.total_new_ltv_generated
