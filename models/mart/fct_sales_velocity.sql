@@ -13,14 +13,7 @@ SELECT
 
     , form_submission_date
     , initial_engagement_date
-    , DATEDIFF(
-        DAY
-        , form_submission_date
-        , LEAST(
-            COALESCE(first_sales_call_date, NULL), 
-            COALESCE(first_text_sent_date, NULL)
-        )
-    ) AS inbound_to_lead_days
+    , DATEDIFF(DAY, form_submission_date, initial_engagement_date) AS inbound_to_lead_days
 
     , (sales_call_count + sales_email_count + sales_text_count) AS total_touchpoints
     , sales_call_count
