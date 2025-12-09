@@ -17,8 +17,8 @@ SELECT
         DAY
         , form_submission_date
         , LEAST(
-            COALESCE(first_sales_call_date, '9999-12-31'), 
-            COALESCE(first_text_sent_date, '9999-12-31')
+            COALESCE(first_sales_call_date, NULL), 
+            COALESCE(first_text_sent_date, NULL)
         )
     ) AS inbound_to_lead_days
 
