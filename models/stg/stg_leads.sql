@@ -18,7 +18,6 @@ SELECT
         , COALESCE(first_text_sent_date, '9999-12-31')
         , COALESCE(first_meeting_booked_date, '9999-12-31')
         , COALESCE({{ parse_date("form_submission_date") }}, '9999-12-31')
-        , COALESCE({{ parse_date("form_submission_date") }}, '9999-12-31')
     ) AS initial_engagement_date
 
     , last_sales_call_date
